@@ -20,6 +20,17 @@
     	<property name="hbm2ddl.auto">update</property>
     	<!-- 设置hibernate的事务隔离级别 ,2:读已提交-->
     	<property name="connection.isolation">2</property>
+    	<!-- 配置c3p0数据源 -->
+    	<property name="c3p0.max_size">10</property>
+    	<property name="c3p0.min_size">5</property>
+    	<property name="c3p0.acquire_increment">5</property>
+    	<property name="c3p0.timeout">2000</property>
+    	<property name="c3p0.idle_test_period">3000</property>
+    	<property name="c3p0.max_statements">2</property>
+    	<!-- 设定jdbc的Statement读取数据的时候每次从数据库中取出的记录条数,100较合理，仅适用于oracle数据库 -->
+    	<property name="jdbc.fetch_size">100</property>
+    	<!-- 设定对数据库进行批量删除，批量更新和批量插入的时候的批次大小 -->
+    	<property name="jdbc.batch_size">30</property>
     	<!-- 指定关联的.hbm.xml文件 -->
     	<mapping resource="com/lyn/hibernate/sessionDemo/News.hbm.xml"/>
     </session-factory>

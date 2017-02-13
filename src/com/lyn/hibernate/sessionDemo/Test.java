@@ -69,14 +69,14 @@ public class Test {
 		//news10.setTitle("Oracle");
 		//session.evict(news10);
 		
-		session.doWork(new Work() {
-			
-			@Override
-			public void execute(Connection conn) throws SQLException {
-				System.out.println(conn);
-				
-			}
-		});
+//		session.doWork(new Work() {
+//			
+//			@Override
+//			public void execute(Connection conn) throws SQLException {
+//				System.out.println(conn);
+//				
+//			}
+//		});
 		transaction.commit();
 		session.close();
 		sf.close();
