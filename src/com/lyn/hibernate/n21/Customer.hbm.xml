@@ -3,9 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-2-15 21:56:41 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.lyn.hibernate.n21.Customer" table="CUSTOMER">
-        <id name="customId" type="java.lang.Integer">
-            <column name="CUSTOM_ID" />
+    <class name="com.lyn.hibernate.n21.Customer" table="CUSTOMERS">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
             <generator class="native" />
         </id>
         <property name="name" type="java.lang.String">

@@ -17,7 +17,7 @@
     	<!-- 是否对SQL进行格式化 -->
     	<property name="format_sql">true</property>
     	<!-- 指定自动生成数据表的策略 -->
-    	<property name="hbm2ddl.auto">create</property>
+    	<property name="hbm2ddl.auto">update</property>
     	<!-- 设置hibernate的事务隔离级别 ,2:读已提交-->
     	<property name="connection.isolation">2</property>
     	<!-- 配置c3p0数据源 -->
