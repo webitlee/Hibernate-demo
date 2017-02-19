@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-2-15 21:56:41 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.lyn.hibernate.n21.both">
+    <class name="Customer" table="CUSTOMERS">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <set name="orders" table="ORDERS" inverse="true">
+        	<key column="CUSTOMER_ID"></key>
+        	<one-to-many class="Order"/>
+        </set>
+    </class>
+</hibernate-mapping>

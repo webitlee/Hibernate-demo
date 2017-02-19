@@ -1,4 +1,4 @@
-package com.lyn.hibernate.n21;
+package com.lyn.hibernate.n21.both;
 
 public class Order {
 	private Integer orderId;
