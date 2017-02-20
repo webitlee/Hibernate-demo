@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-2-20 21:01:04 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.lyn.hibernate.one2one.Manager" table="MANAGER">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <!-- 使用many-to-one方式映射一对一关联关系 -->
+        <many-to-one name="departmentId" class="com.lyn.hibernate.one2one.Department">
+        	<column name="DEPARTMENT_ID" unique="true"></column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

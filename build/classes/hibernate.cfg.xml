@@ -34,8 +34,10 @@
     	<mapping resource="com/lyn/hibernate/sessionDemo/News.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/n21/Customer.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/n21/Order.hbm.xml"/>
-    	 -->
-  		<mapping resource="com/lyn/hibernate/n21/both/Customer.hbm.xml"/>
+    	<mapping resource="com/lyn/hibernate/n21/both/Customer.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/n21/both/Order.hbm.xml"/>
+    	 -->
+    	<mapping resource="com/lyn/hibernate/one2one/Manager.hbm.xml"/>
+    	<mapping resource="com/lyn/hibernate/one2one/Department.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
