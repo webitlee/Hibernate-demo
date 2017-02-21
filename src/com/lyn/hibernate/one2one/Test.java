@@ -18,15 +18,27 @@ public class Test {
 		Transaction transaction = session.beginTransaction();
 		
 		//添加记录
-		Manager manager1 = new Manager();
-		manager1.setName("Black Lee");
-		Department department1 = new Department();
-		department1.setName("技术部");
+//		Manager manager1 = new Manager();
+//		manager1.setName("Black Lee");
+//		Department department1 = new Department();
+//		department1.setName("技术部");
 		//设定关联关系
-		manager1.setDepartmentId(department1);
-		department1.setManagerId(manager1);
-		session.save(manager1);
-		session.save(department1);
+//		manager1.setDepartmentId(department1);
+//		department1.setManagerId(manager1);
+//		session.save(manager1);
+//		session.save(department1);
+		
+		//获得对象
+		//Manager manager2 = (Manager) session.get(Manager.class, 2);
+		//System.out.println(manager2.getName());
+		//查询Department对象的连接条件应该是department.id = manager.department_id,而不是department.id=manager.id
+		//System.out.println(manager2.getDepartmentId().getName());
+		Department department2 = (Department) session.get(Department.class, 2);
+		//在查询没有外键一端的对象时，使用的左外连接，一并查询出其关联的对象，并进行初始化。
+		System.out.println(department2.getName());
+		System.out.println(department2.getManagerId().getName());
+		
+		
 		
 		
 		transaction.commit();

@@ -11,7 +11,7 @@
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <!-- 映射一对一关联关系， 在对应的数据表中已经由外键了，在当前持久化类中使用one-to-one进行映射-->
-        <one-to-one name="managerId" class="com.lyn.hibernate.one2one.Manager"></one-to-one>
+        <!-- 映射一对一关联关系， 在对应的数据表中已经有外键了，在当前持久化类中使用one-to-one进行映射-->
+        <one-to-one name="managerId" class="com.lyn.hibernate.one2one.Manager" property-ref="departmentId"></one-to-one>
     </class>
 </hibernate-mapping>
