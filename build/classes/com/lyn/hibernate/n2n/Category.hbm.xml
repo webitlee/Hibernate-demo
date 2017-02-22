@@ -1,16 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-2-21 21:55:02 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-2-22 21:58:40 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.lyn.hibernate.one2one.primary.Manager" table="MANAGER">
+    <class name="com.lyn.hibernate.n2n.Category" table="CATEGORY">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="native" />
+            <generator class="assigned" />
         </id>
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <one-to-one name="department" class="com.lyn.hibernate.one2one.primary.Department"></one-to-one>
+        <set name="items" table="ITEMS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="com.lyn.hibernate.n2n.Items" />
+        </set>
     </class>
 </hibernate-mapping>

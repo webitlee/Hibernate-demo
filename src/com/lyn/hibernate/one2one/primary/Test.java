@@ -17,6 +17,21 @@ public class Test {
 		Session session = sf.openSession();
 		Transaction transaction = session.beginTransaction();
 		
+		//插入操作
+		//Department department1 = new Department();
+		//department1.setName("技术部");
+		//Manager manager1 = new Manager();
+		//manager1.setName("Black Lee");
+		//department1.setManager(manager1);
+		//manager1.setDepartment(department1);
+		//先插入哪一个都不会产生多余的update语句，因为department记录的主键依赖于manager记录的主键，所以总会先插入manger记录
+		//session.save(department1);
+		//session.save(manager1);
+		
+		//查询操作
+		Department department2 = (Department) session.get(Department.class, 1);
+		System.out.println(department2.getName());
+		System.out.println(department2.getManager().getName());
 		
 		transaction.commit();
 		session.close();
