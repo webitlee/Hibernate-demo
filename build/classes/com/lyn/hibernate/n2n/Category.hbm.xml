@@ -6,16 +6,20 @@
     <class name="com.lyn.hibernate.n2n.Category" table="CATEGORY">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <set name="items" table="ITEMS" inverse="false" lazy="true">
+        <!-- table属性：指定中间表 -->
+        <set name="items" table="CATEGORYS_ITEMS">
             <key>
-                <column name="ID" />
+                <column name="CATEGORY_ID" />
             </key>
-            <one-to-many class="com.lyn.hibernate.n2n.Items" />
+            <!-- 使用多对多的关联关系 -->
+            <many-to-many class="com.lyn.hibernate.n2n.Items" >
+            	<column name="ITEM_ID"></column>
+            </many-to-many>
         </set>
     </class>
 </hibernate-mapping>
