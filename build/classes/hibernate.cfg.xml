@@ -40,8 +40,10 @@
     	<mapping resource="com/lyn/hibernate/one2one/Department.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/one2one/primary/Manager.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/one2one/primary/Department.hbm.xml"/>
-    	 -->
     	<mapping resource="com/lyn/hibernate/n2n/Category.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/n2n/Items.hbm.xml"/>
+    	 -->
+    	<mapping resource="com/lyn/hibernate/n2n/both/Category.hbm.xml"/>
+    	<mapping resource="com/lyn/hibernate/n2n/both/Items.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
