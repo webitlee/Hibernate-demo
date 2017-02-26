@@ -1,4 +1,4 @@
-package com.lyn.hibernate.inherit.subclass;
+package com.lyn.hibernate.inherit.joined_subclass;
 
 import java.util.List;
 

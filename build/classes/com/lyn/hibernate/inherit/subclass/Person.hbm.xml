@@ -20,7 +20,7 @@
         </property>
         
         <!-- 映射子类Stuend，使用subclass -->
-        <subclass name="Student" discriminator-value="STUDENT">
+        <subclass name="com.lyn.hibernate.inherit.subclass.Student" discriminator-value="STUDENT">
         	<property name="school" type="string">
         		<column name="SCHOOL"></column>
         	</property>
