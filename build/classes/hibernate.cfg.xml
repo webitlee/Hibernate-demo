@@ -45,7 +45,8 @@
     	<mapping resource="com/lyn/hibernate/n2n/both/Category.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/n2n/both/Items.hbm.xml"/>
     	<mapping resource="com/lyn/hibernate/inherit/subclass/Person.hbm.xml"/>
-    	 -->
     	<mapping resource="com/lyn/hibernate/inherit/joined_subclass/Person.hbm.xml"/>
+    	 -->
+    	<mapping resource="com/lyn/hibernate/inherit/union_subclass/Person.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
