@@ -3,6 +3,7 @@ package com.lyn.hibernate.hql;
 
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -49,11 +50,23 @@ public class Test {
 //		System.out.println(employee);
 		
 		//在映射文件中定义命名查询语句
-		Query query = session.getNamedQuery("salary");
-		query.setFloat("minSal", 3000).setFloat("maxSal", 8000);
+//		Query query = session.getNamedQuery("salary");
+//		query.setFloat("minSal", 3000).setFloat("maxSal", 8000);
+//		@SuppressWarnings("unchecked")
+//		List<Employee> emp = query.list();
+//		System.out.println(emp);
+		
+		//投影查询
+		String hql = "select e.email, e.salary from Employee e where e.department = :department";
+		Query query = session.createQuery(hql);
+		Department department = new Department();
+		department.setId(5);
 		@SuppressWarnings("unchecked")
-		List<Employee> emp = query.list();
-		System.out.println(emp);
+		List<Object[]> result = query.setEntity("department", department).list();
+		for(Object[] dep : result){
+			System.out.println(Arrays.asList(dep));
+		}
+		
 		
 		transaction.commit();
 		session.close();
