@@ -57,16 +57,25 @@ public class Test {
 //		System.out.println(emp);
 		
 		//投影查询
-		String hql = "select e.email, e.salary from Employee e where e.department = :department";
-		Query query = session.createQuery(hql);
-		Department department = new Department();
-		department.setId(5);
-		@SuppressWarnings("unchecked")
-		List<Object[]> result = query.setEntity("department", department).list();
-		for(Object[] dep : result){
-			System.out.println(Arrays.asList(dep));
-		}
+//		String hql = "select new Employee(e.salary, e.email, e.department) from Employee e where e.department = :department";
+//		Query query = session.createQuery(hql);
+//		Department department = new Department();
+//		department.setId(5);
+//		@SuppressWarnings("unchecked")
+//		List<Employee> result = query.setEntity("department", department).list();
+//		for(Employee emp : result){
+//			System.out.println(emp.getId() + ", " + emp.getEmail() + ", " + emp.getDepartment());
+//		}
 		
+		//报表查询
+		String hql = "select min(e.salary), max(e.salary) from Employee e group by e.department having min(e.salary) > :minSal";
+		Query query = session.createQuery(hql);
+		query.setFloat("minSal", 5000);
+		@SuppressWarnings("unchecked")
+		List<Object[]> list = query.list();
+		for(Object[] obj : list){
+			System.out.println(Arrays.asList(obj));
+		}
 		
 		transaction.commit();
 		session.close();

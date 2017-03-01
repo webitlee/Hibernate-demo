@@ -1,6 +1,16 @@
 package com.lyn.hibernate.hql;
 
 public class Employee {
+	public Employee() {
+		super();
+	}
+	public Employee(float salary, String email, Department department) {
+		super();
+		this.salary = salary;
+		this.email = email;
+		this.department = department;
+	}
+	
 	private Integer id;
 	private String name;
 	private float salary;

@@ -25,4 +25,8 @@ public class Department {
 	public void setEmployee(Set<Employee> employee) {
 		this.employee = employee;
 	}
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + ", employee=" + employee + "]";
+	}
 }
