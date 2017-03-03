@@ -3,7 +3,9 @@ package com.lyn.hibernate.hql;
 
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -23,17 +25,17 @@ public class Test {
 		sf = conf.buildSessionFactory(serviceRegistry);
 		Session session = sf.openSession();
 		Transaction transaction = session.beginTransaction();
-		//°´²ÎÊıÎ»ÖÃ
-		//1.´´½¨Query¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+		//1.ï¿½ï¿½ï¿½ï¿½Queryï¿½ï¿½ï¿½ï¿½
 //		String hql = "from Employee e where e.salary > ? and e.email like ?";
 //		Query query = session.createQuery(hql);
-		//2.°ó¶¨²ÎÊı
+		//2.ï¿½ó¶¨²ï¿½ï¿½ï¿½
 //		query.setFloat(0, 5000).setString(1, "%c%");
-		//Ö´ĞĞ²éÑ¯
+		//Ö´ï¿½Ğ²ï¿½Ñ¯
 //		List<Employee> employee = query.list();
 //		System.out.println(employee.size());
 		
-		//°´ÃüÃû²ÎÊı
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		String hql = "from Employee e where e.id > :id and e.salary > :salary";
 //		Query query = session.createQuery(hql);
 //		query.setInteger("id", 9).setFloat("salary", 8000);
@@ -49,14 +51,14 @@ public class Test {
 //		List<Employee> employee = query.setFirstResult((pageNo - 1) * pageSize).setMaxResults(pageSize).list();
 //		System.out.println(employee);
 		
-		//ÔÚÓ³ÉäÎÄ¼şÖĞ¶¨ÒåÃüÃû²éÑ¯Óï¾ä
+		//ï¿½ï¿½Ó³ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½
 //		Query query = session.getNamedQuery("salary");
 //		query.setFloat("minSal", 3000).setFloat("maxSal", 8000);
 //		@SuppressWarnings("unchecked")
 //		List<Employee> emp = query.list();
 //		System.out.println(emp);
 		
-		//Í¶Ó°²éÑ¯
+		//Í¶Ó°ï¿½ï¿½Ñ¯
 //		String hql = "select new Employee(e.salary, e.email, e.department) from Employee e where e.department = :department";
 //		Query query = session.createQuery(hql);
 //		Department department = new Department();
@@ -67,15 +69,45 @@ public class Test {
 //			System.out.println(emp.getId() + ", " + emp.getEmail() + ", " + emp.getDepartment());
 //		}
 		
-		//±¨±í²éÑ¯
-		String hql = "select min(e.salary), max(e.salary) from Employee e group by e.department having min(e.salary) > :minSal";
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
+//		String hql = "select min(e.salary), max(e.salary) from Employee e group by e.department having min(e.salary) > :minSal";
+//		Query query = session.createQuery(hql);
+//		query.setFloat("minSal", 5000);
+//		@SuppressWarnings("unchecked")
+//		List<Object[]> list = query.list();
+//		for(Object[] obj : list){
+//			System.out.println(Arrays.asList(obj));
+//		}
+		//è¿«åˆ‡å·¦å¤–è¿æ¥
+		//String hql = "from Department d left join fetch d.employee";
+		//å»é‡å¤
+		//String hql = "select distinct d from Department d left join fetch d.employee";
+		//Query query = session.createQuery(hql);
+		//@SuppressWarnings("unchecked")
+		//List<Department> dept = query.list();
+		//å»é‡å¤
+		//dept = new ArrayList<Department>(new LinkedHashSet<Department>(dept));
+		//for(Department d : dept){
+		//	System.out.println(d);
+		//}
+		
+		//å·¦å¤–è¿æ¥
+//		String hql = "from Department d left join d.employee";
+//		Query query = session.createQuery(hql);
+//		@SuppressWarnings("unchecked")
+//		List<Object[]> list = query.list();
+//		for(Object[] d : list){
+//			System.out.println(Arrays.asList(d));
+//		}
+		//ä»…æŸ¥è¯¢Departmentå¯¹è±¡
+		String hql = "select distinct d from Department d left join d.employee";
 		Query query = session.createQuery(hql);
-		query.setFloat("minSal", 5000);
 		@SuppressWarnings("unchecked")
-		List<Object[]> list = query.list();
-		for(Object[] obj : list){
-			System.out.println(Arrays.asList(obj));
+		List<Department> dept = query.list();
+		for(Department d : dept){
+			System.out.println(d);
 		}
+
 		
 		transaction.commit();
 		session.close();
