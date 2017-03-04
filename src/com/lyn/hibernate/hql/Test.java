@@ -68,14 +68,19 @@ public class Test {
 //		}
 		
 		//报表查询
-		String hql = "select min(e.salary), max(e.salary) from Employee e group by e.department having min(e.salary) > :minSal";
+//		String hql = "select min(e.salary), max(e.salary) from Employee e group by e.department having min(e.salary) > :minSal";
+//		Query query = session.createQuery(hql);
+//		query.setFloat("minSal", 5000);
+//		@SuppressWarnings("unchecked")
+//		List<Object[]> list = query.list();
+//		for(Object[] obj : list){
+//			System.out.println(Arrays.asList(obj));
+//		}
+		
+		//删除操作
+		String hql = "delete from Department where id = :id";
 		Query query = session.createQuery(hql);
-		query.setFloat("minSal", 5000);
-		@SuppressWarnings("unchecked")
-		List<Object[]> list = query.list();
-		for(Object[] obj : list){
-			System.out.println(Arrays.asList(obj));
-		}
+		query.setInteger("id", 11).executeUpdate();
 		
 		transaction.commit();
 		session.close();
