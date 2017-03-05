@@ -20,16 +20,30 @@ public class Test {
 		Session session = sf.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		Employee emp1 = (Employee) session.get(Employee.class, 10);
-		System.out.println(emp1.getName());
+		//类级别的二级缓存
+//		Employee emp1 = (Employee) session.get(Employee.class, 10);
+//		System.out.println(emp1.getName());
+//		
+//		transaction.commit();
+//		session.close();
+//		session = sf.openSession();
+//		transaction = session.beginTransaction();
+//		
+//		Employee emp2 = (Employee) session.get(Employee.class, 10);
+//		System.out.println(emp2.getName());
 		
+		//集合级别的二级缓存
+		Department department = (Department) session.get(Department.class, 1);
+		System.out.println(department.getName());
+		System.out.println(department.getEmployee().size());
 		transaction.commit();
 		session.close();
 		session = sf.openSession();
 		transaction = session.beginTransaction();
 		
-		Employee emp2 = (Employee) session.get(Employee.class, 10);
-		System.out.println(emp2.getName());
+		Department department2 = (Department) session.get(Department.class, 1);
+		System.out.println(department2.getName());
+		System.out.println(department2.getEmployee().size());
 		
 		transaction.commit();
 		session.close();
